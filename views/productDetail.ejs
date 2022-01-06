@@ -1,0 +1,21 @@
+<% layout("layouts/boilerplate")%>
+
+<div class="card-header">
+  <div class="card mb-3">
+    <img class="details" src="<%= product.imageUrl%>" alt="<%= product.title%>">
+    <div class="card-body">
+      <h5 class="card-title"><%= product.title%></h5>
+      <h6 class="card-title"></h6>
+      <% if (product.qty > 0) { %>
+        <p class="card-text"><b>In Stock</b></p>
+        <% } else { %>
+          <p class="card-text"><b>Out Stock</b></p>
+          <% } %>
+    <p class="card-text"><%= product.description%></p>
+      <a href="/home" class="btn btn-success" role="button">Back To HomePage</a>
+      <form action="/<%=product._id%>/add-to-cart" method="post">
+        <button type="submit" class="btn btn-success ">Add to Cart</button>
+      </form>
+    </div>
+  </div>
+</div>
