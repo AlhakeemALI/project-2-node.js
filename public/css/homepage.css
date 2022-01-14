@@ -1,34 +1,38 @@
 body {
-  background-image: url(https://images.unsplash.com/photo-1620866476625-41f4780a578a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80);
+  background-color: black;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 150px;
 }
 
 .card {
-  background: white;
-  border-style: double;
-  color: black;
-  margin: 0.3rem;
-  border-color: black;
-  text-shadow: black;
-  font-style: oblique;
-  font: 1em sans-serif;
-}
-.card img {
-  max-height: 150px;
+  background-color: black;
+  color: white;
+  text-align: center;
+  font-family: sans-serif;
+  margin-bottom: 25px;
 }
 
-.btn {
-  background: dimgray;
-  border-radius: 20px;
-  border: none;
-  color: #fff;
-  padding: 10px;
+.card-img-top {
   width: 100%;
-  height: 100%;
-  font-weight: 200;
-  text-transform: uppercase;
-  cursor: pointer;
+  height: 160px;
 }
-.flexbuttons {
-  display: flex;
+.card-body {
+  min-height: 206px;
+}
+.display {
   justify-content: space-between;
+}
+
+.stock {
+  color: green;
+}
+.outstock {
+  color: red;
+}
+
+.card-text {
+  min-height: 60px;
 }

@@ -1,0 +1,35 @@
+
+        <% layout("layouts/boilerplate")%>
+        <link rel="stylesheet" href="/css/products.css">
+        <div class="container">
+          <div class="row mt-1 mb-4">
+             <% products.forEach(element => { %>
+              <div class="col-md-4">
+                <div class="card">
+                     <img class="card-img-top" src="<%= element.imageUrl%>" alt="<%= element.title%>">
+                     <div class="card-body">
+                      <h5 class="card-title display"><%= element.title%></h5>
+                      <h5 class="card-title display">Price:$<%=element.price%></h5>
+                      <% if (element.qty > 0) { %>
+                        <p class="card-text display stock"><b>In Stock</b></p>
+                        <% } else { %>
+                          <p class="card-text display outstock"><b>Out Stock</b></p>
+                          <% } %>
+                      <p class="card-text"><%= element.description%></p>
+                      <div>
+                      <form action="/<%=element._id%>/add-to-cart" method="post"novalidate class="needs-validation">
+                        <button type="submit" class="btn btn-success ">Add to Cart</button>
+                         <div class="valid-feedback">
+                          Successfully Add it !
+                        </div>
+                       </form>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+                <% }) %>
+               
+      
+
+    
+

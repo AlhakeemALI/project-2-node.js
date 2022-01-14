@@ -1,10 +1,15 @@
 body {
-  background-image: url(https://images.unsplash.com/photo-1472289065668-ce650ac443d2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1738&q=80);
+  background: url("https://images.unsplash.com/32/Mc8kW4x9Q3aRR3RkP5Im_IMG_4417.jpg?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80")
+    fixed;
+  background-size: cover;
+  padding: 0;
+  margin: 0;
 }
+
 form {
   width: 50%;
   margin: 50px auto;
-  background: salmon;
+  background-image: url(https://images.unsplash.com/photo-1641997076583-20f1fc66a900?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80);
   padding: 60px 120px 80px 120px;
   text-align: center;
   -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
@@ -26,24 +31,6 @@ form {
   cursor: pointer;
   transition: ease 0.3s;
   border-radius: 20px;
-}
-
-.btn:hover {
-  background: #8bc34a;
-  color: #ffffff;
-}
-
-btn {
-  display: inline-block;
-  padding: 12px 24px;
-  background: rgb(220, 220, 220);
-  font-weight: bold;
-  color: rgb(120, 120, 120);
-  border: none;
-  outline: none;
-  border-radius: 3px;
-  cursor: pointer;
-  transition: ease 0.3s;
 }
 
 .btn:hover {

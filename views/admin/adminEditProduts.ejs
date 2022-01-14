@@ -1,0 +1,44 @@
+<% layout("layouts/boilerplate")%>
+<link rel="stylesheet" href="/css/admin.css">
+<h1>Admin Update Form</h1>
+<form 
+action="/admin/<%=itemToUpdate._id%>?_method=PUT" method="post" novalidate class="needs-validation">
+  <div class="form-group">
+    <label for=" title">Title</label>
+    <input class="form-control form-control-lg" type="text" name="title" id="title" value="<%=itemToUpdate.title%>"   placeholder="Enter item Title" required>
+    <div class="valid-feedback">
+      Looks good!
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="imageUrl">imageUrl</label>
+    <input class="form-control form-control-lg" type="text" name="imageUrl" id="imageUrl" value="<%=itemToUpdate.imageUrl%>" placeholder="Enter imageUrl" required>
+    <div class="valid-feedback">
+      Looks good!
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="price">Price</label>
+    <input class="form-control form-control-lg" type="number" name="price" id="price" value="<%=itemToUpdate.price%>"  step="0.01" placeholder="Enter Item Price" required>
+    <div class="valid-feedback">
+      Looks good!
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="description">Description</label>
+    <input class="form-control form-control-lg" type="text" name="description" id="description" value="<%=itemToUpdate.description%>" placeholder="Enter Item Description" required>
+    <div class="valid-feedback">
+      Looks good!
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="qty">Qty</label>
+    <input class="form-control form-control-lg" type="number" name="qty" id="qty" value="<%=itemToUpdate.qty%>" placeholder="Enter Item Quantity" required>
+    <div class="valid-feedback">
+      Looks good!
+    </div>
+    <br>
+    <button type="submit" class="button_slide slide_left">Update</button>
+  </div>
+</form>
+

@@ -1,0 +1,21 @@
+body {
+  background-image: url(https://images.unsplash.com/photo-1633078654544-61b3455b9161?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1645&q=80);
+}
+.description button {
+  border: 1px solid #6ab446;
+  background: #6ab446;
+  border-radius: 10px;
+  color: #fff;
+  align-items: center;
+}
+.description button:hover {
+  border: 1px solid #fff;
+  background: #fff;
+  color: #000;
+}
+.alert-heading {
+  text-align: center;
+}
+.btn {
+  align-items: center;
+}

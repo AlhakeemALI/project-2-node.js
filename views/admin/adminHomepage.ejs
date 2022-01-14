@@ -10,10 +10,10 @@
               <h5 class="card-title"><%= element.title%></h5>
               <h6 class="card-title">Price:$<%=element.price%></h6>
               <p class="card-text"><%= element.description%></p>
-              <div class="flexbuttons">
-              <a class="btn btn-success" href="/admin/<%=element._id %>/edit">Edit</a>
-              <form action="/admin/<%=element._id %>?_method=DELETE" method="post">
-                 <button type="submit" class="btn btn-success ">Delete</button>
+              <div class="card-nody">
+                <a class="card-link btn btn-warning" href="/admin/<%=element._id %>/edit">Edit</a>
+                <form class="d-inline" action="/admin/<%=element._id %>?_method=DELETE" method="post">
+                 <button type="submit" class="btn btn-danger">Delete</button>
                </form>
               </div>
             </div>

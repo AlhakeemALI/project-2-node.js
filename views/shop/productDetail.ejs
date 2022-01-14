@@ -1,0 +1,60 @@
+
+<% layout("layouts/boilerplate")%>
+<link rel="stylesheet" href="/css/productDetail.css">
+<div class="row">
+  <div class="col-6 ">
+    <div class="card mb-3 mt-3">
+      <img class="card-img-top" src="<%= product.imageUrl%>" " alt="...">
+      <div class="card-body">
+        <h5 class="card-title"><%= product.title%></h5>
+        <p class="card-text"><%= product.description%></p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">price: $<%= product.price%></li>
+        <% if (product.qty > 0) { %>
+        <li class="list-group-item">In Stock</li>
+          <% } else { %> 
+            <li class="list-group-item">Out Stock</li>
+            <% } %>
+      </ul>
+      <div class="card-body">
+        <a href="/home" class="card-link btn btn-success mx-3">Back To HomePage</a>
+        <form class="d-inline" action="/<%=product._id%>/add-to-cart" method="post">
+          <button type="submit" class="btn btn-warning mx-3 ">Add to Cart</button>
+        </form>
+      </div>
+      <div class="card-footer text-muted">
+        2 days ago
+      </div>
+    </div>
+</div>
+  <div class="col-6">
+    <h2 class="mt-3">Leave a Review </h2>
+    <form  action="/product/<%=product._id%>/review" method="post" novalidate class="needs-validation mb-3" >
+            <div class="mb-3">
+        <label class="form-label" for="reating">Rating</label>
+        <input class="form-range" type="range" min="1" max="5" name="reating" id="rating" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="body"><b>Review</b></label>
+        <textarea class="form-control" name="body" id="body" cols="30" rows="3" required></textarea>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+      <button type="submit" class="btn btn-success  mb-3 ">Submit</button>
+    </form>
+    <% for (let comment of product.reviews) { %>
+      <div class="card mb-3 ">
+        <div class="card-body">
+        <p class="card-text">Review:<%= comment.body %></p>
+        <h5 class="card-title">Rating: <%= comment.reating %></p>
+        <form action="/product/<%=product._id%>/review/<%=comment._id%>?_method=DELETE" method="post">
+        <button type="submit" class="btn btn-danger">Delete</button>
+      </form>
+    </div>
+  </div>
+ <%}%>
+  </div>
+</div>
+ 
