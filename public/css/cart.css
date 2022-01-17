@@ -1,0 +1,27 @@
+body {
+  background-color: white;
+}
+
+.row-fluid {
+  display: flex;
+}
+
+h5 {
+  margin-top: 0;
+}
+h1 {
+  color: chocolate;
+}
+.card {
+  height: 100%;
+  display: flex;
+}
+.card-title {
+  display: inline-block;
+}
+.card-text {
+  min-height: 5em;
+}
+.top {
+  display: inline-block;
+}

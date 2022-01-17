@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-const { Schema } = mongoose;
 const passportLocalMongoose = require("passport-local-mongoose");
+const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
   email: {
@@ -11,7 +11,7 @@ const UserSchema = new Schema({
   cart: [
     {
       type: Schema.Types.ObjectId,
-      ref: "StoreItem ",
+      ref: "StoreItem",
     },
   ],
 });

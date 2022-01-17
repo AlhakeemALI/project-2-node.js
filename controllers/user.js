@@ -13,14 +13,16 @@ router.get("/register", (req, res) => {
 
 router.post(
   "/register",
-  catchAsync(async (req, res) => {
+  catchAsync(async (req, res, next) => {
     try {
       const { email, username, password } = req.body;
       const user = new User({ email, username });
       const registeredUser = await User.register(user, password);
-      console.log(registeredUser);
-      req.flash("success", "Welcome to Online Shop!");
-      res.redirect("/home");
+      req.login(registeredUser, (err) => {
+        if (err) return next(err);
+        req.flash("success", "Welcome to Online Shop!");
+        res.redirect("/");
+      });
     } catch (e) {
       req.flash("error", e.message);
       res.redirect("/register");
@@ -39,15 +41,16 @@ router.post(
   }),
   (req, res) => {
     console.log(req.body);
-    req.flash("success", "welcome back");
-    res.redirect("/home");
+    req.flash("success", "welcome back!");
+    const redirectUrl = req.session.returnTo || "/shop";
+    res.redirect(redirectUrl);
   }
 );
 
-//router.get("/fake", async (req, res) => {
-// const user = new User({ email: "aaa@123.com", username: "adam" });
-//const registeredUser = await User.register(user, "123");
-////res.send(registeredUser);
-//});
+router.get("/logout", (req, res) => {
+  req.logout();
+  req.flash("success", "Goodbye!");
+  res.redirect("/");
+});
 
 module.exports = router;

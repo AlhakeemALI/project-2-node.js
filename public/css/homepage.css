@@ -1,5 +1,5 @@
 body {
-  background-color: black;
+  background-color: white;
 }
 
 .card-img-top {
@@ -12,7 +12,7 @@ body {
   color: white;
   text-align: center;
   font-family: sans-serif;
-  margin-bottom: 25px;
+  margin-bottom: 50px;
 }
 
 .card-img-top {
@@ -31,8 +31,4 @@ body {
 }
 .outstock {
   color: red;
-}
-
-.card-text {
-  min-height: 60px;
 }

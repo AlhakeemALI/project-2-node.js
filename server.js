@@ -51,8 +51,12 @@ passport.deserializeUser(User.deserializeUser());
 
 //app.use(eerorControllers.get404);
 app.use((req, res, next) => {
+  if (!["/login", "/ shop"].includes(req.originalUrl)) {
+    req.session.returnTo = req.originalUrl;
+  }
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
+  res.locals.currentUser = req.user;
   next();
 });
 
