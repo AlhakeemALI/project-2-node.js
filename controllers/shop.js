@@ -16,6 +16,10 @@ const isLoggedIn = (req, res, next) => {
   next();
 };
 
+router.get("/test", (req, res) => {
+  res.render("test.ejs");
+});
+
 router.get("/", async (req, res) => {
   const products = await StoreItem.find({});
   //crossOriginIsolated.log(products);
@@ -35,7 +39,15 @@ router.get(
 
   catchAsync(async (req, res, next) => {
     const { id } = req.params;
-    const product = await StoreItem.findById(id).populate("reviews");
+    //const findReview = await Review.findById(id);
+    const product = await StoreItem.findById(id)
+      .populate({
+        path: "reviews",
+        populate: {
+          path: "author",
+        },
+      })
+      .populate("author");
     console.log(product);
     if (!product) {
       req.flash("error", "Cannot find product!");
@@ -81,6 +93,7 @@ router.get("/cart", isLoggedIn, async (req, res) => {
   const userId = req.user._id;
   console.log(userId);
   const findUser = await User.findById(userId).populate("cart");
+
   //console.log(findUser.cart[0].title);
   //await findUser.save();
   res.render("shop/cart", { findUser });
@@ -99,7 +112,7 @@ router.delete(
   })
 );
 
-router.get("/checkout/:userId", async (req, res) => {
+router.get("/checkout/:userId", isLoggedIn, async (req, res) => {
   const userId = req.user._id;
   const findUser = await User.findById(userId).populate("cart");
   const randomNumber = Math.floor(Math.random() * 100000000) + 1;

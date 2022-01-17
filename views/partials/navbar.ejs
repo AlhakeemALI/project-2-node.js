@@ -1,5 +1,4 @@
 
- 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Online Shop</a>
@@ -8,19 +7,22 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
+          
           <a class="nav-link" href="/">shop</a>
           <a class="nav-link" href="/home">HomePage</a>
           <a class="nav-link" href="/cart">Cart</a>
           <a class="nav-link" href="/checkout/:userId">Checkout</a>
+          <% if (currentUser && currentUser._id == "61e513b72c267619aeaf3c7f" ) { %>
           <a class="nav-link" href="/admin/editProduct">Admin Control</a>
-          <a class="nav-link" href="/admin/add-product">Admin Add products</a>
+          <a class="nav-link" href="/admin/add-product">Admin Add products<a>
+            <% } %>
         </div>
         <div class="navbar-nav ms-auto">
           <% if(!currentUser) { %>
           <a class="nav-link" href="/login">Login</a>
           <a class="nav-link" href="/register">Register</a>
           <%} else{ %>
-          <a class="nav-link" href="logout">Logout</a>
+          <a class="nav-link" href="/logout">Logout</a>
           <% }%>
         </div>
       </div>

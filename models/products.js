@@ -1,5 +1,6 @@
-const mongoose = require("../db/coonection");
+const mongoose = require("../db/connection");
 const Review = require("./reviews.js");
+const User = require("./user.js");
 const { Schema } = mongoose;
 //const Review = require("./models/reviews");
 const storeItemSchema = new mongoose.Schema({
@@ -31,6 +32,10 @@ const storeItemSchema = new mongoose.Schema({
       ref: "Review",
     },
   ],
+  author: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+  },
 });
 
 storeItemSchema.post("findOneAndDelete", async function (doc) {

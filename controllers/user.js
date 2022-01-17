@@ -21,6 +21,7 @@ router.post(
       req.login(registeredUser, (err) => {
         if (err) return next(err);
         req.flash("success", "Welcome to Online Shop!");
+        console.log(registeredUser);
         res.redirect("/");
       });
     } catch (e) {

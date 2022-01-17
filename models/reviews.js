@@ -1,12 +1,16 @@
 const mongoose = require("mongoose");
-//const mongoose = require("../db/coonection");
 const { Schema } = mongoose;
+//const User = require("./user.js");
 
-const reviewScema = new Schema({
+const reviewSchema = new Schema({
   body: String,
   reating: Number,
+  author: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+  },
 });
 
-const Review = mongoose.model("Review", reviewScema);
-
+const Review = mongoose.model("Review", reviewSchema);
 module.exports = Review;
+// "61e4c1c16d16201d270afb09"

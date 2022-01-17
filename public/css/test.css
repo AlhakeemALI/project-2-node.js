@@ -1,52 +1,15 @@
-body {
-  background-image: url(https://images.unsplash.com/photo-1472289065668-ce650ac443d2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1738&q=80);
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
-form {
-  width: 50%;
-  margin: 50px auto;
-  background: salmon;
-  padding: 60px 120px 80px 120px;
-  text-align: center;
-  -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
-  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
-  border-radius: 40px;
-  font-family: monospace;
-  font-size: 25px;
+.row {
+  background: white;
+  border-radius: 30px;
+  box-shadow: 12px 12px 22px;
 }
 
-.btn {
-  display: inline-block;
-  padding: 12px 24px;
-  background: rgb(220, 220, 220);
-  font-weight: bold;
-  color: rgb(120, 120, 120);
-  border: none;
-  outline: none;
-  border-radius: 3px;
-  cursor: pointer;
-  transition: ease 0.3s;
-  border-radius: 20px;
-}
-
-.btn:hover {
-  background: #8bc34a;
-  color: #ffffff;
-}
-
-btn {
-  display: inline-block;
-  padding: 12px 24px;
-  background: rgb(220, 220, 220);
-  font-weight: bold;
-  color: rgb(120, 120, 120);
-  border: none;
-  outline: none;
-  border-radius: 3px;
-  cursor: pointer;
-  transition: ease 0.3s;
-}
-
-.btn:hover {
-  background: #8bc34a;
-  color: #ffffff;
+.login img {
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
 }

@@ -41,6 +41,7 @@ router.post(
     const newProduct = new StoreItem(req.body);
     await newProduct.save();
     req.flash("success", "Successfuly made a new Product!");
+    console.log(newProduct);
     res.redirect("/");
 
     //console.log(req.body);
