@@ -6,6 +6,7 @@ const engine = require("ejs-mate");
 const session = require("express-session");
 const flash = require("connect-flash");
 const joi = require("joi");
+require("dotenv").config();
 ////////////////////////
 const passport = require("passport");
 const localStrategy = require("passport-local");
@@ -14,8 +15,13 @@ const adminControllers = require("./controllers/admin");
 const shopControllers = require("./controllers/shop");
 const userControllers = require("./controllers/user");
 const reviewsControllers = require("./controllers/review");
-//const ExpressError = require("./utils/ExpressError");
-//const catchAsync = require("./utils/catchAsync");
+const ExpressError = require("./utils/ExpressError");
+const catchAsync = require("./utils/catchAsync");
+const mongoSanitize = require("express-mongo-sanitize");
+const helmet = require("helmet");
+//const { MongoStore } = require("connect-mongo");
+//const MongoDBStore = require("connect-mongo")(session);
+
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
@@ -26,13 +32,23 @@ app.set("views", path.join(__dirname, "views"));
 //app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(methodOverride("_method"));
-
+app.use(mongoSanitize());
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+  })
+);
+//const store = new MongoStore({
+//url: dbUrl,
+//});
 const sessionConfig = {
+  name: "what's",
   secret: "secretissecret!",
   resave: false,
   saveUninitialized: true,
   cookie: {
     httpOnly: true,
+    //secure: true,
     expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
     maxAge: 1000 * 60 * 60 * 24 * 7,
   },
@@ -85,3 +101,5 @@ app.use((err, req, res, next) => {
 app.listen(3000, () => {
   console.log("Serving on port 3000");
 });
+
+//mongodb+srv://firstuser:<password>@cluster0.tej5u.mongodb.net/myFirstDatabase?retryWrites=true&w=majority

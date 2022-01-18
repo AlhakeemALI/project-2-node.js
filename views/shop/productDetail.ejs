@@ -20,14 +20,15 @@
       </ul>
       <div class="card-body">
         <a href="/home" class="card-link btn btn-success mx-3">Back To HomePage</a>
-        <form class="d-inline" action="/<%=product._id%>/add-to-cart" method="post">
+        <form class="d-inline" action="/user/user._id/product/<%=product._id%>" method="post">
           <button type="submit" class="btn btn-warning mx-3 ">Add to Cart</button>
+          
         </form>
       </div>
     </div>
 </div>
   <div class="col-6 text-black">
-    <h2 class="mt-3 text-white">Leave a Review </h2>
+    <h2 class="mt-3 text-dark"><b>Leave a Review</b></h2>
     <form  action="/product/<%=product._id%>/review" method="post" novalidate class=" mb-3 needs-validation" >
       <fieldset class="starability-basic">
         <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked aria-label="No rating." />
@@ -43,7 +44,7 @@
         <label for="first-rate5" title="Amazing">5 stars</label>
       </fieldset>
       <div class="mb-3">
-        <label class="form-label text-white" for="body"><b>Review</b></label>
+        <label class="form-label text-dark" for="body"><h4><b>Review</b></h4></label>
         <textarea class="form-control" name="body" id="body" cols="30" rows="3" required></textarea>
         <div class="valid-feedback">
           Looks good!

@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 const mongoURI = "mongodb://localhost:27017/store";
+const dbUrl = "mongodb://localhost:27017/store";
 mongoose
-  .connect(mongoURI, {
+  .connect(dbUrl, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })

@@ -7,10 +7,10 @@
       <div class="col-md-4 mb-3">
         <div class="card h-100">
              <img class="card-img-top" src="<%= element.imageUrl%>" alt="<%= element.title%>">
-             <div class="card-body d-flex flex-column align-content-between">
+             <div class="card-body d-flex flex-column bg-dark text-white">
                <div class="d-flex justify-content-around">
               <h5 class="card-title"><%= element.title%></h5>
-              <h5 class="card-title ">Price:$<%=element.price%></h5>
+              <h5 class="card-title text-danger ">Price:$<%=element.price%></h5>
             </div>
               <% if (element.qty > 0) { %>
                 <p class="card-text display stock"><b>In Stock</b></p>
@@ -18,7 +18,7 @@
                   <p class="card-text display outstock"><b>Out Stock</b></p>
                   <% } %>
               <p class="card-text"><%= element.description%></p>
-              <div class="card-nody">
+              <div class="card-nody ">
               <a class="card-link btn btn-success mx-3 " href="/product/<%=element._id%>">Details</a>
               <form class="d-inline needs-validation" action="/user/user._id/product/<%=element._id%>" method="post"novalidate >
                  <button type="submit" class="btn btn-warning mx-3">Add to Cart</button>

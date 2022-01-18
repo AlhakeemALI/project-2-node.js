@@ -42,7 +42,7 @@ router.post(
     await newProduct.save();
     req.flash("success", "Successfuly made a new Product!");
     console.log(newProduct);
-    res.redirect("/");
+    res.redirect("/admin/editproduct");
 
     //console.log(req.body);
   })
