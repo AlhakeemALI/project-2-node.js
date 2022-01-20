@@ -20,7 +20,8 @@ const catchAsync = require("./utils/catchAsync");
 const mongoSanitize = require("express-mongo-sanitize");
 const helmet = require("helmet");
 //const { MongoStore } = require("connect-mongo");
-//const MongoDBStore = require("connect-mongo")(session);
+const MongoStore = require("connect-mongo");
+const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/store";
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -38,12 +39,22 @@ app.use(
     contentSecurityPolicy: false,
   })
 );
-//const store = new MongoStore({
-//url: dbUrl,
-//});
+
+const secret = process.env.SECRET || "secretissecret!",
+
+const store = new MongoStore({
+  mongoUrl: dbUrl,
+  touchAfter: 24 * 60 * 60,
+  secret,
+});
+store.on("error", function (e) {
+  console.log("SEEION STORE ERROR", e);
+});
+
 const sessionConfig = {
+  store,
   name: "what's",
-  secret: "secretissecret!",
+  secret,
   resave: false,
   saveUninitialized: true,
   cookie: {
@@ -101,5 +112,3 @@ app.use((err, req, res, next) => {
 app.listen(3000, () => {
   console.log("Serving on port 3000");
 });
-
-//mongodb+srv://firstuser:<password>@cluster0.tej5u.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
