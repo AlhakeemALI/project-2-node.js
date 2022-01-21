@@ -19,9 +19,10 @@ const ExpressError = require("./utils/ExpressError");
 const catchAsync = require("./utils/catchAsync");
 const mongoSanitize = require("express-mongo-sanitize");
 const helmet = require("helmet");
-//const { MongoStore } = require("connect-mongo");
+
 const MongoStore = require("connect-mongo");
 const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/store";
+const secret = process.env.SECRET || "secretissecret!";
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -29,24 +30,18 @@ app.use(express.json());
 app.engine("ejs", engine);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
-//app.use(express.static(path.join(__dirname, "views")));
-//app.use(express.static(path.join(__dirname, "public")));
+
 app.use(express.static(path.join(__dirname, "public")));
 app.use(methodOverride("_method"));
 app.use(mongoSanitize());
-app.use(
-  helmet({
-    contentSecurityPolicy: false,
-  })
-);
-
-const secret = process.env.SECRET || "secretissecret!",
+app.use(helmet({ contentSecurityPolicy: false }));
 
 const store = new MongoStore({
   mongoUrl: dbUrl,
   touchAfter: 24 * 60 * 60,
   secret,
 });
+
 store.on("error", function (e) {
   console.log("SEEION STORE ERROR", e);
 });
@@ -76,7 +71,6 @@ passport.use(new localStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-//app.use(eerorControllers.get404);
 app.use((req, res, next) => {
   if (!["/login", "/ shop"].includes(req.originalUrl)) {
     req.session.returnTo = req.originalUrl;
@@ -109,6 +103,8 @@ app.use((err, req, res, next) => {
   res.status(statusCode).render("error", { err });
 });
 
-app.listen(3000, () => {
-  console.log("Serving on port 3000");
+const port = process.env.PORT || 3000;
+
+app.listen(port, () => {
+  console.log(`Serving on port ${port}`);
 });
