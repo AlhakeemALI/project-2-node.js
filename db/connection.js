@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 let mongoURI = "mongodb://localhost:27017/store";
-//const dbUrl = DB_URL
 
 mongoURIl =
   process.env.NODE_ENV === "production" ? process.env.DB_URL : mongoURI;
