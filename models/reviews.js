@@ -13,4 +13,3 @@ const reviewSchema = new Schema({
 
 const Review = mongoose.model("Review", reviewSchema);
 module.exports = Review;
-// "61e4c1c16d16201d270afb09"

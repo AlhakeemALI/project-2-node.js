@@ -12,7 +12,7 @@
           <a class="nav-link" href="/home">shop</a>
           <a class="nav-link" href="/cart">Cart</a>
           <a class="nav-link" href="/checkout/:userId">Checkout</a>
-          <% if (currentUser && currentUser._id == "61ea2ae47c9e14cc7e3f85b1" ) { %>
+          <% if (currentUser) { %>
           <a class="nav-link" href="/admin/editProduct">Admin Control</a>
           <a class="nav-link" href="/admin/add-product">Admin Add products<a>
             <% } %>
